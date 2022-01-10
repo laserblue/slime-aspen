@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sqlite Experimentation</title>
+    <meta
+      name="description"
+      content="Add, insert and delete data in a SQLite database"
+    />
+    <link
+      id="favicon"
+      rel="icon"
+      href="https://glitch.com/edit/favicon-app.ico"
+      type="image/x-icon"
+    />
+    .
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css" />
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/client.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>
+          The Great Ideas of the Western World
+        </h1>
+        <h3>
+          (According to the first edition of The Great Books of the Western
+          World series, 1952)
+        </h3>
+        <h4>
+          An Sqlite experimentation project
+<!-- TO DO 
+DONE: create a table for the Great Ideas
+DONE: change the routes from /getDreams to /getGreatIdeas 
+populate the Great Ideas table the hard way using the selection sheet
+repeat above for Authors table (new table rather than GreatIdeas table column to hold biographical links, written works by author etc. )
+create links table to information regarding a.i., nlu, nlp, BORIS, NELL, Episodic Reader, Synthetic Darwin, New Dimensions in Testimony Holograms, autonomous chatbots, Histochat,
+CSS3 
+  Having the entire selection list in HTML5 seems very redundant and a bad example of Don't Repeat Yourself (DRY).
+  It might be faster than pulling an item from the sqlite3 database
+  I wonder if I could make an html form template to insert the option values from the sqlite database (???)
+  It would be a loop with <option value="variable x">variable x</option>
+
+
+-->
+        </h4>
+      </header>
+     <div class="flex-container">
+      <div id="ideaform">                         
+      <form action="/getGreatIdeas" method="post">
+        <p class="bold">Select a Great Idea of the Western World</p>
+        <select required name="greatIdea" type="submit">
+          <option value="Angel">Angel</option>
+          <option value="Animal">Animal</option>
+          <option value="Aristocracy">Aristocracy</option>
+          <option value="Art">Art</option>
+          <option value="Astronomy and Cosmology">Astronomy and Cosmology</option>
+          <option value="Beauty">Beauty</option>
+          <option value="Being">Being </option>
+          <option value="Cause">Cause</option>
+          <option value="Chance">Chance</option>
+          <option value="Change">Change</option>
+          <option value="Citizen">Citizen</option>
+          <option value="Constitution">Constitution</option> <!-- look into loop and template to change values to Capitalized first letter -->
+          <option value="Courage">Courage</option>
+          <option value="Custom and Convention">Custom and Convention</option>
+          <option value="Definition">Definition</option>
+          <option value="Democracy">Democracy</option>
+          <option value="Desire">Desire</option>
+          <option value="Dialectic">Dialectic</option>
+          <option value="Duty">Duty</option>
+          <option value="Education">Education</option>
+          <option value="Element">Element</option>
+          <option value="Emotion">Emotion</option>
+          <option value="Equality">Equality</option>
+          <option value="Eternity">Eternity</option>
+          <option value="Evolution">Evolution</option>
+          <option value="Experience">Experience</option>
+          <option value="Family">Family</option>
+          <option value="Fate">Fate</option>
+          <option value="Form">Form</option>
+          <option value="God">God</option>
+          <option value="Good and Evil">Good and Evil</option>
+          <option value="Government">Government</option>
+          <option value="Habit">Habit</option>
+          <option value="Happiness">Happiness</option>
+          <option value="History">History</option>
+          <option value="Honor">Honor</option>
+          <option value="Hypothesis">Hypothesis</option>
+          <option value="Idea">Idea</option>
+          <option value="Immortality">Immortality</option>
+          <option value="Induction">Induction</option>
+          <option value="Infinity">Infinity</option>
+          <option value="Judgment">Judgment</option>
+          <option value="Justice">Justice</option>
+          <option value="Knowledge">Knowledge</option>
+          <option value="Labor">Labor</option>
+          <option value="Language">Language</option>
+          <option value="Law">Law</option>
+          <option value="Liberty">Liberty</option>
+          <option value="Life and Death">Life and Death</option>
+          <option value="Logic">Logic</option>
+          <option value="Love">Love</option>
+          <option value="Man">Man</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Matter">Matter</option>
+          <option value="Mechanics">Mechanics</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Memory and Imagination">Memory and Imagination</option>
+          <option value="Metaphysics">Metaphysics</option>
+          <option value="Mind">Mind</option>
+          <option value="Monarchy">Monarchy</option>
+          <option value="Nature">Nature</option>
+          <option value="Necessity and Contingency">Necessity and Contingency</option>
+          <option value="Oligarchy">Oligarchy</option>
+          <option value="One and Many">One and Many</option>
+          <option value="Opinion">Opinion</option>
+          <option value="Opposition">Opposition</option>
+          <option value="Philosophy">Philosophy</option>
+          <option value="Physics">Physics</option>
+          <option value="Pleasure and Pain">Pleasure and Pain</option>
+          <option value="Poetry">Poetry</option>
+          <option value="Principle">Principle</option>
+          <option value="Progress">Progress</option>
+          <option value="Prophecy">Prophecy</option>
+          <option value="Prudence">Prudence</option>
+          <option value="Punishment">Punishment</option>
+          <option value="Quality">Quality</option>
+          <option value="Quantity">Quantity</option>
+          <option value="Reasoning">Reasoning</option>
+          <option value="Relation">Relation</option>
+          <option value="Religion">Religion</option>
+          <option value="Revolution">Revolution</option>
+          <option value="Rhetoric">Rhetoric</option>
+          <option value="Same and Other">Same and Other</option>
+          <option value="Science">Science</option>
+          <option value="Sense">Sense</option>
+          <option value="Sign and Symbol">Sign and Symbol</option>
+          <option value="Sin">Sin</option>
+          <option value="Slavery">Slavery</option>
+          <option value="Soul">Soul</option>
+          <option value="Space">Space</option>
+          <option value="State">State</option>
+          <option value="Temperance">Temperance</option>
+          <option value="Theology">Theology</option>
+          <option value="Time">Time</option>
+          <option value="Truth">Truth</option>
+          <option value="Tyranny and Despotism">Tyranny and Despotism</option>
+          <option value="Universal and Particular">Universal and Particular</option>
+          <option value="Virtue and Vice">Virtue and Vice</option>
+          <option value="War and Peace">War and Peace</option>
+          <option value="Wealth">Wealth</option>
+          <option value="Will">Will</option>
+          <option value="Wisdom">Wisdom</option>
+          <option value="World">World</option>
+        </select>
+        <br /><br />
+        <button type="submit" id="submit-greatIdea">Submit Great Idea of the Western World</button>
+      </form>
+      <section class="greatIdeas">
+        <ul id="greatIdeas"></ul>
+        <br /><br />
+        <button id="clear-greatIdeas">Clear Great Ideas of the Western World</button>
+      </section>
+    </div>
+      <!-- make a generic javascript program/template that takes a list and builds an HTML5 selection list -->
+    <div id="authorform">
+       <form action="/getAuthors" method="post">
+        <p class="bold">Select An Author To Chat With</p>
+        <select required name="author" type="submit">
+          <option value="Homer">Homer</option> <!--  can I get rid of this repetition of names? -->
+          <option value="Aeschylus">Aeschylus</option>
+          <option value="Sophocles">Sophocles</option>
+          <option value="Euripides">Euripides</option>
+          <option value="Aristophanes">Aristophanes</option>
+          <option value="Herodotus">Herodotus</option>
+          <option value="Plato">Plato</option>
+          <option value="Aristotle">Aristotle</option>
+          <option value="Hippocrates">Hippocrates</option>
+          <option value="Galen">Galen</option>
+          <option value="Euclid">Euclid</option>
+          <option value="Archimedes">Archimedes</option>
+          <option value="Apollonius of Perga">Apollonius of Perga</option>
+          <option value="Nicomachus of Gerasa">Nicomachus of Gerasa</option>
+          <option value="Lucretius">Lucretius</option>
+          <option value="Epictetus">Epictetus</option>
+          <option value="Marcus Aurelius">Marcus Aurelius</option>
+          <option value="Virgil">Virgil</option>
+          <option value="Plutarch">Plutarch</option>
+          <option value="P. Cornelius Tacitus">P. Cornelius Tacitus</option>
+          <option value="Ptolemy">Ptolemy</option>
+          <option value="Nicolaus Copernicus">Nicolaus Copernicus</option>
+          <option value="Johannes Kepler">Johannes Kepler</option>
+          <option value="Plotinus">Plotinus</option>
+          <option value="Augustine of Hippo">Augustine of Hippo</option>
+          <option value="Thomas Aquinas">Thomas Aquinas</option>
+          <option value="Dante Alighieri">Dante Alighieri</option>
+          <option value="Dante Alighieri">Dante Alighieri</option>
+          <option value="Niccolò Machiavelli">Niccolò Machiavelli</option>
+          <option value="Thomas Hobbes">Thomas Hobbes</option>
+          <option value="François Rabelais">François Rabelais</option>
+          <option value="Michel Eyquem de Montaigne">Michel Eyquem de Montaigne</option>
+          <option value="William Shakespeare">William Shakespeare</option>
+          <option value="William Gilbert">William Gilbert</option>
+          <option value="Galileo Galilei">Galileo Galilei</option>
+          <option value="William Harvey">William Harvey</option>
+          <option value="Miguel de Cervantes">Miguel de Cervantes</option>
+          <option value="Sir Francis Bacon">Sir Francis Bacon</option>
+          <option value="René Descartes">René Descartes</option>
+          <option value="Benedict de Spinoza">Benedict de Spinoza</option>
+          <option value="John Milton">John Milton</option>
+          <option value="Blaise Pascal">Blaise Pascal</option>
+          <option value="Sir Isaac Newton">Sir Isaac Newton</option>
+          <option value="Christian Huygens">Christian Huygens</option>
+          <option value="John Locke">John Locke</option>
+          <option value="George Berkeley">George Berkeley</option>
+          <option value="David Hume">David Hume</option>
+          <option value="Jonathan Swift">Jonathan Swift</option>
+          <option value="Laurence Sterne">Laurence Sterne</option>
+          <option value="Henry Fielding">Henry Fielding</option>
+          <option value="Charles de Secondat, Baron de Montesquieu">Charles de Secondat, Baron de Montesquieu</option>
+          <option value="Jean Jacques Rousseau">Jean Jacques Rousseau</option>
+          <option value="Adam Smith">Adam Smith</option>
+          <option value="Edward Gibbon">Edward Gibbon</option>
+          <option value="Immanuel Kant">Immanuel Kant</option>
+          <option value="American State Papers">American State Papers</option><!--rdf-blank-node-type author agent -->
+          <option value="Alexander Hamilton, James Madison, John Jay">Alexander Hamilton, James Madison, John Jay</option><!-- multiple-authorship author agent -->
+          <option value="John Stuart Mill">John Stuart Mill</option>
+          <option value="James Boswell">James Boswell</option>
+          <option value="Antoine Laurent Lavoisier">Antoine Laurent Lavoisier</option>
+          <option value="Jean Baptiste Joseph Fourier">Jean Baptiste Joseph Fourier</option>
+          <option value="Michael Faraday">Michael Faraday</option>
+          <option value="Georg Wilhelm Friedrich Hegel">Georg Wilhelm Friedrich Hegel</option>
+          <option value="Johann Wolfgang von Goethe">Johann Wolfgang von Goethe</option>
+          <option value="Herman Melville">Herman Melville</option>
+          <option value="Charles Darwin">Charles Darwin</option>
+          <option value="Karl Marx">Karl Marx</option>
+          <option value="Karl Marx and Friedrich Engels">Karl Marx and Friedrich Engels</option><!-- multiple-authorship author agent -->
+          <option value="Count Leo Tolstoy">Count Leo Tolstoy</option>
+          <option value="Fyodor Mikhailovich Dostoevsky">Fyodor Mikhailovich Dostoevsky</option>
+          <option value="William James">William James</option>
+          <option value="Sigmund Freud">Sigmund Freud</option>
+          <option value="Robert Maynard Hutchins">Robert Maynard Hutchins</option>
+          <option value="Mortimer J. Adler">Mortimer J. Adler</option>
+        </select>
+        <br /><br />
+        <button type="submit" id="submit-author">Submit Author</button>
+      </form>
+      <section class="authors">
+        <ul id="authors"></ul>
+        <!-- create an sqlite3 table for these bot/Phaser project related links and create csv/google sheet files and download sqlite.db  for storage if possible -->
+        <p>
+          <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Great_Books_of_the_Western_World" target="_blank">Great Books of the Western World</a></li>
+            <li>https://www.researchgate.net/publication/251895907_Designing_a_Chat-bot_that_Simulates_an_Historical_Figure</li>
+            <li>https://www.chatbots.org/</li>
+            <li>https://www.chatbots.org/conversational_agent/</li>
+            <li><a href="http://www.engines4ed.org/hyperbook/nodes/NODE-258-pg.html" target="_blank">Engines for Education Hyperbook by Roger Schank and Chip Cleary, Eight Types of Searching Agents in the Story Archive (based on historical personages) NB: Peety the Parrot is not an historical personage)</a></li>
+            <li>https://en.wikipedia.org/wiki/Homer</li>
+            <li>https://www.britannica.com/biography/Homer-Greek-poet</li>
+            <li>https://www.ancient.eu/homer/</li>
+            <li><a href="https://www.thepartnershipineducation.com/resources/charles-darwin-synthethic-interview" target="_blank">Charles Darwin Synthetic Interview</a></li>
+            <li><a href="https://www.youtube.com/watch?v=6AKdfTMVJUw" target="_blank">Mu Lambda 165, (Automatically Programmed for General Information)</a></li>
+            <li><a href="https://www.youtube.com/watch?v=TXr5NMNQBu4" target="_blank">New Dimensions in Testimony from USC Shoah Foundation</a></li>
+            <li>http://dbpedia.org/ontology/author</li>
+            <li>https://github.com/dbpedia/extraction-framework/</li>
+            <li>https://en.wikipedia.org/wiki/Knowledge_Graph</li>
+            <li><a href="http://www.qrg.northwestern.edu/papers/Files/QRG_Dist_Files/QRG_2007/SS06ForbusK2.pdf" target="_blank">A Prototype System that Learns by Reading Simplified Texts by Kenneth D. Forbus, Christopher Riesbeck, Lawrence Birnbaum, Kevin Livingston, Abhishek Sharma and Leo Ureel</a></li>
+            <li><a href="http://www.qrg.northwestern.edu/papers/papers.html#LR" target="_blank">Papers on Learning by Reading,Qualitative Reasoning Group, Northwestern University</a></li>
+            <li>https://pythonhosted.org/ordf/ordf_vocab_opencyc.html</li>
+            <li>http://www.semantic-web-journal.net/system/files/swj1141.pdf</li>
+            <li>https://en.wikipedia.org/wiki/Focused_crawler</li>
+            <li><a href="http://rtw.ml.cmu.edu/rtw/" target="_blank">CMU Read the Web, NELL: Never-Ending Language Learning</a></li>
+            <li>http://rtw.ml.cmu.edu/rtw/kbbrowser/special:asknell</li>
+            <li><a href="https://mitpress.mit.edu/books/depth-understanding" target="_blank">In-Depth Understanding: A Computer Model of Integrated Processing for Narrative Comprehension by Michael George Dyer</a></li>
+            <li>http://conceptnet.io/</li>
+            <li>https://en.wikipedia.org/wiki/Natural-language_understanding</li>
+            <li><a href="https://books.google.ca/books?id=J3e4AAAAIAAJ&q=The+Process+of+Question+Answering+by+Wendy+Lehnert&dq=The+Process+of+Question+Answering+by+Wendy+Lehnert&hl=en&sa=X&ved=0ahUKEwiI0_fQ9aHmAhXcFjQIHdVlCvQQ6AEIKTAA" target="_blank">The Process of Question Answering by Wendy G. Lehnert</a></li>
+            <li>https://en.wikipedia.org/wiki/Never-Ending_Language_Learning</li>
+            <li>https://github.com/eaplatanios/jelly-bean-world</li>
+            <li>https://en.wikipedia.org/wiki/Web_scraping</li>
+            <li>http://www.qrg.northwestern.edu/ideas/companions-idea.htm</li>
+            <li>https://ebiquity.umbc.edu/paper/html/id/469/The-Cycic-Friends-Network-getting-Cyc-agents-to-reason-together</li>
+            <li><a href="https://github.com/protegeproject/cellfie-plugin/wiki/Grocery-Tutorial" target="_blank">Grocery Ontology Model Construction Tutorial by Josef Hardi</a></li>
+            <li><a href="https://noc.esdc.gc.ca/English/noc/welcome.aspx?ver=16" target="_blank">National Occupational Classification 2016</a></li>
+            <li><a href="https://books.google.ca/books/about/The_Work_Wealth_and_Happiness_of_Mankind.html?id=1xFPAAAAIAAJ&redir_esc=y" target="_blank">The Work, Wealth and Happiness of Mankind, Volume 1 by H.G. Wells (1931) - Google Books</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/The_Work,_Wealth_and_Happiness_of_Mankind" target="_blank">The Work, Wealth and Happiness of Mankind by H.G. Wells (1932) - Wikipedia Article</a></li>
+            <li><a href="https://archive.org/details/in.ernet.dli.2015.222465/page/n5" target="_blank">The Work, Wealth and Happiness of Mankind by H.G. Wells (1932) - Internet Archive Online Volume</a></li>
+            <li><a href="https://www.bfi.org/design-science/primer/world-design-science-decade" target="_blank">World Design Science Decade (1965 - 1975) (6 documents)</a></li>
+            <li><a href="https://www.bfi.org/sites/default/files/attachments/literature_source/world_game_series_document1.pdf" target="_blank">THE WORLD GAME: INTEGRATIVE RESOURCE UTILIZATION PLANNING TOOL By R. Buckminster Fuller</a></li>
+            <li><a href="http://designsciencelab.com/" target="_blank">Global Solutions Lab</a></li>
+            <li>http://geni.org/wrsc/</li>
+            <li><a href="https://www.geni.org/globalenergy/issues/global/qualityoflife/what-the-world-wants-project.shtml" target="_blank">What the World Wants Project</a></li>
+            <li><a href="https://www.geni.org/globalenergy/issues/global/what-the-world-wants/index.shtml" target="_blank">Annual Costs of Programs to Solve Systemic Human Problems as a Percentage of Annual Global Military Expenditures</a></li>
+            <li><a href="https://www.wrsc.org/" target="_blank">World Resources SIMCenter</a></li>
+            <li><a href="https://www.youtube.com/watch?v=r2QOHtCiJ5E" target="_blank">World Resources Simulation Center promo spot</a></li>
+            <li><a href="https://www.youtube.com/watch?v=M2d3iWevyQU" target="_blank">Ben Shepard Presents World Resources Simulation Center (WRSC) Design Concept</a></li>
+            <li><a href="https://www.worldometers.info/" target="_blank">worldometers</a></li>
+            <li><a href="https://www.youtube.com/watch?v=YUY5FwYKKO4" target="_blank">Games With A Purpose - Luis von Ahn</a></li>
+            <li>https://yukaichou.com/chou-musings/five-examples-of-gamified-crowdsourcing-to-learn-from/</li>
+            <li><a href="https://www.youtube.com/watch?v=byfKkM-MmEU" target="_blank">Crowdsourcing Through A Game: Mapping The World's Problems Together | Ramy Wassef | TEDxPortTawfik</a></li>
+            <li>https://en.wikipedia.org/wiki/Conceptual_dependency_theory</li>
+            <li>https://en.wikipedia.org/wiki/Universal_Networking_Language</li>
+            <li>https://en.wikipedia.org/wiki/Resource_Description_Framework</li>
+            <li>https://www.ontology4.us/</li>
+            <li>https://www.mpi-inf.mpg.de/departments/databases-and-information-systems/research/yago-naga/yago/</li>
+            <li><a href="https://www.amazon.ca/Ideas-History-Thought-Invention-Freud/dp/0060935642" target="_blank">Ideas: A History of Thought and Invention, from Fire to Freud by Peter Watson</a></li>
+            <li><a href="https://books.google.ca/books/about/Ideas_that_Changed_the_World.html?id=5nTAPwAACAAJ&redir_esc=y" target="_blank">Ideas That Changed the World by  Felipe Fernandez Armesto</a></li>
+            <li><a href="https://books.google.ca/books?id=oY6YAQAAQBAJ&printsec=frontcover&dq=1001+great+ideas&hl=en&sa=X&ved=0ahUKEwjkqI_X0ZLmAhVsHzQIHSB1DecQ6AEIRzAE#v=onepage&q=1001%20great%20ideas&f=false" target="_blank">1001 Ideas That Changed the Way We Think (edited by Robert Arp)</a></li>
+            <li><a href="https://www.amazon.ca/Ideas-That-Matter-Concepts-Century/dp/0465025218" target="_blank">Ideas That Matter by A.C. Grayling</a></li>
+            <li><a href="https://books.google.ca/books?id=VEUUAQAAIAAJ&q=great+ideas+of+the+eastern+world&dq=great+ideas+of+the+eastern+world&hl=en&sa=X&ved=0ahUKEwixnOD20ZLmAhUDNH0KHSGrDnkQ6AEIKTAA" target="_blank">Great Thinkers of the Eastern World: The Major Thinkers and the Philosophical and Religious Classics of China, India, Japan, Korea, and the World of Islam</a></li>
+            <li><a href="https://books.google.ca/books?id=Hd4NAAAAYAAJ&q=great+literature+of+the+Eastern+World&dq=great+literature+of+the+Eastern+World&hl=en&sa=X&ved=0ahUKEwjmgvOg0pLmAhW2GDQIHRrACQYQ6AEIKTAA" target="_blank">Great Literature of the Eastern World: The Major Works of Prose, Poetry and Drama from China, India, Japan, Korea and the Middle East by Ian Philip McGreal</a></li>
+            <li>https://www.ibm.com/cloud/watson-assistant/</li>
+            <li>https://www.ibm.com/watson</li>
+            <li>https://www.ibm.com/watson/natural-language-processing</li>
+            <li>https://developer.amazon.com/docs/alexa-skills-kit-sdk-for-nodejs/overview.html</li>
+            <li>https://github.com/alexa</li>
+            <li>https://books.google.com/talktobooks/</li>
+            <li>https://prodigalnomore.wordpress.com/great-books-of-the-western-world-as-free-ebooks/</li>
+            <li><a href="https://www.youtube.com/watch?v=flIKPXy3U3s" target="_blank">Noet™ - Join the Great Conversation with Noet [video no longer available]</a></li>
+            <li><a href="https://www.youtube.com/watch?v=2d6b5cwUIfo" target="_blank">Noet™ - Introducing: Great Books of the Western World [video no longer available]</a></li>
+            <li><a href="https://www.youtube.com/watch?v=GIPBGhZy7BI" target="_blank">Immerse yourself in the Classics with Noet™</a></li>
+            <li><a href="https://www.youtube.com/watch?v=qSLVv5bFLd0" target="_blank">Faeland Node Editor Dialogue System!</a></li>
+            <li><a href="https://github.com/proyecto26/ion-phaser target=_blank">Ion-Phaser: A web component to integrate Phaser with Angular, React, Vue, or any other web framework.</a></li>
+            <li><a href="https://phaser.io/news/2019/07/drop-down-forms-in-phaser-games">How to add drop-down HTML forms to your Phaser Games.</a></li>
+            <li><a href="https://phasergames.com/html-buttons-in-phaser-3-form-ui-part-2/" target="_blank">HTML Buttons in Phaser 3 – Form Ui Part 2</a></li>
+            <li><a href="http://phaser.io/tutorials/getting-started-with-quest" target="_blank">Getting Started with Quest AI</a></li>
+            <li><a href="" target="_blank"></a></li>
+            <li><a href="https://phaser.io/news/2019/01/learn-to-make-html5-games-with-phaser-3 target=_blank">A brand new tutorial covering the all important basics from a Phaser 2 veteran.</a></li>
+<!-- 
+
+https://phaser.io/news/2017/04/responsive-game-tutorial-part-1
+https://phaser.io/news/2017/01/how-to-make-an-rpg
+https://phaser.io/news/2015/09/online-game-tutorial
+https://phaser.io/news/2018/08/phaser-3-tilemap-file-pack-project-template 
+https://phaser.io/news/2018/07/modular-game-worlds-in-phaser-3
+https://phaser.io/news/2018/05/socket-io-phaser-3-tutorial
+https://phaser.io/news/2017/03/socketio-multiplayer-tutorial
+https://phaser.io/news/2017/09/dialog-manager-plugin
+https://phaser.io/news/2017/06/phaser-node-kit
+https://phaser.io/news/2017/06/creating-games-with-phaser-part-5
+https://phaser.io/news/2017/04/phaser-and-es6
+http://thebotanistgame.com/blog/2015/02/28/dialogue-in-phaserjs.html
+
+
+
+
+
+https://phaser.io/news/2018/07/free-phaser-2-course
+
+
+
+
+
+
+-->
+            
+            
+            
+            <li></li>
+        </ul>  
+        </p>
+        <button id="clear-authors">Clear Authors</button>
+      </section>
+    </div>
+    <div>
+         
+      <section class="greatideas">
+        <ul id="greatideas"></ul>
+      </section>
+    </div>
+      
+
+      
+  
+     </div>
+    </main>
+    <footer>
+      <div
+        class="glitchButton"
+        style="position:fixed;top:20px;right:20px;"
+      ></div>
+      Made with <a href="https://glitch.com">Glitch</a>
+
+      <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+
+      <script src="https://button.glitch.me/button.js"></script>
+    </footer>
+  
+  </body>
+</html>

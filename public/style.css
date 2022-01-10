@@ -1,0 +1,101 @@
+/* styles */
+/* called by your view template */
+@media only screen and { orientation: landscape) {
+  body {
+    background-color: green;
+  }
+}
+.flex-container {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 2em;
+  background-color: lightblue;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+#ideaform {
+  padding: 20px 100px 0px 100px;
+  margin: 0px 0px 10px 0px;
+  background-color: grey;
+  border: 1px solid blue;
+  width: 50%;
+}
+
+form {
+  padding: 50px 50px 50px 50px;
+  margin: 10px;
+  border: 1px solid red;
+  margin-bottom: 20px;
+  background-color: yellow;
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 3px;
+}
+
+#authorform {
+  padding: 20px 100px 0px 100px;
+  margin: 0px; 50px; 0px; 50px;
+  background-color: LightSeaGreen;
+  border: 1px solid green;
+  width: 50%;
+}
+
+input {
+  display: block;
+  margin-bottom: 0px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  box-shadow: 2px 2px teal;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: yellow;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
